@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  client:
+    build: .
+    volumes:
+      - "./client:/app"
+    ports:
+      - "3031:3000"
+    depends_on:
+      - server
+
+  server:
+    build: .
+    volumes:
+      - "./server:/app"
+      - "~/.config:/root/.config"
+    ports:
+      - "3003:3000"

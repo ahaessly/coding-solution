@@ -1,0 +1,11 @@
+[
+ {"name": "id", 	"type": "String", "mode": "Required", "description": "[DESCRIPTION]"},
+ {"name": "bases", 	"type": "String", "mode": "Required", "description": "[DESCRIPTION]"},
+ {"name": "name", 	"type": "String", "mode": "Required", "description": "[DESCRIPTION]"},
+ {"name": "createdAt", 	"type": "Timestamp", "mode": "Required", "description": "[DESCRIPTION]"},
+ {"name": "creator", 	"type": "Struct", "mode": "Required", "description": "[DESCRIPTION]", "fields":
+ [  {"name": "handle", "type": "String", "mode": "Required"},
+    {"name": "id", "type": "String", "mode": "Required"},
+    {"name": "name", "type": "String", "mode": "Required"}
+ ]}
+]

@@ -1,0 +1,7 @@
+gcloud auth login
+gcloud config set project ahdsoftware
+bq mk --project_id=ahdsoftware asimov
+bq mk --project_id=ahdsoftware asimov.sequences sequence_schema.json
+
+./loaddata.sh ahdsoftware asimov sequences data alldata
+
