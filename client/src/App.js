@@ -1,20 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 
 import React, {Component} from 'react'
 import Table from './Table' 
 import Form from './Form'
 
-
 class App extends Component {
   state = {
     bases: "",
+    urlBase: "http://localhost",
+    port: 3000,
     sequences: [],
   };
 
   fetchSeqeunces(bases) {
-   const match_url = 'http://localhost:3003/sequence/match/'
-   // const url = 'http://localhost:4000/sequence/seq_05erEbwq'
+   const match_url = `${this.state.urlBase}:${this.state.port}/sequence/match/`
    console.log(bases)
    var url = match_url + bases.bases
    console.log(url)
@@ -31,9 +30,9 @@ class App extends Component {
 
   render() {
     return (
-        <div className="container">
+        <div>
           <Form handleSubmit={this.handleSubmit} />
-          <Table {...this.state}/>
+          <Table {...this.state} />
         </div>
     )
     }

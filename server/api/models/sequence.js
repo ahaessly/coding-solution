@@ -1,18 +1,39 @@
 // Import the Google Cloud client library
 const {BigQuery} = require('@google-cloud/bigquery')
 
-const projectId = 'broad-dsp-spec-ops'
-const datasetId = 'andrea_test'
-const tableId = 'sequences'
+var projectId = 'broad-dsp-spec-ops'
+var datasetId = 'andrea_test'
+var tableId = 'sequences'
 
 // Create a client
 const bigqueryClient = new BigQuery()
 
-const selectFrom = `SELECT * FROM \`${datasetId}.${tableId}\``
-const legacySelectFrom = `SELECT * FROM [${projectId}:${datasetId}.${tableId}]`
-// const limit = function(num) { ` limit ${num}`}
-const idQuery = `${selectFrom} WHERE id = `
+selectFrom = function() {
+  return `SELECT * FROM \`${datasetId}.${tableId}\``
+}
 
+legacySelectFrom = function() {
+  return `SELECT * FROM [${projectId}:${datasetId}.${tableId}]`
+}
+
+// const limit = function(num) { ` limit ${num}`}
+const idQuery = selectFrom() + ` WHERE id = `
+
+exports.setDBInfo = function(project, dataset, table) {
+  console.log("setting db info")
+  projectId = project
+  datasetId = dataset
+  tableId = table
+}
+
+exports.getDBInfo = function() {
+  console.log("getting dbinfo")
+  return {
+    project: projectId,
+    dataset: datasetId,
+    table: tableId
+  }
+}
 
 exports.getById = function(id) {
   
@@ -29,7 +50,7 @@ exports.getById = function(id) {
 }
 
 exports.findSequencesContainingBases = function(bases) {
-  const query = `${legacySelectFrom} WHERE bases contains "${bases}"`
+  const query = legacySelectFrom() + ` WHERE bases contains "${bases}"`
 
   console.log(`query: ${query}`)
   const options = {

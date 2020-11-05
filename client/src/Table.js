@@ -20,7 +20,7 @@ const TableBody = (props) => {
         <tr key={index}>
           <td>{row.id}</td>
           <td>{row.name}</td>
-          <td>{row.createdAt.value}</td>
+          <td>{new Date(row.createdAt.value).toLocaleDateString("en-US")}</td>
           <td>{row.creator_name}</td>
           <td>{row.bases}</td>
         </tr>
@@ -40,7 +40,7 @@ class Table extends Component {
         <h2>Sequences that contain: {this.props.bases}</h2>
         <table>
             <TableHeader />
-            <TableBody sequences={this.props.sequences}  />
+            <TableBody sequences={this.props.sequences}/>
         </table>
 
       </div>

@@ -2,8 +2,11 @@
 module.exports = function(app) {
   var controller = require('../controllers/sequenceController')
 
-  //  app.route('/sequence')
-  //   .get(controller.listSequences)
+  app.route('/dbinfo/:project/:dataset/:table')
+    .post(controller.setDBInfo)
+
+  app.route('/dbinfo')
+    .get(controller.getDBInfo)
 
   app.route('/sequence/:id')
     .get(controller.getSequence)
