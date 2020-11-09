@@ -1,29 +1,35 @@
 // Import the Google Cloud client library
 const {BigQuery} = require('@google-cloud/bigquery')
 
-var projectId = 'broad-dsp-spec-ops'
-var datasetId = 'andrea_test'
-var tableId = 'sequences'
+var projectId='ahdsoftware'
+var datasetId='asimov'
+var tableId='sequences'
+var token=''
 
 // Create a client
-const bigqueryClient = new BigQuery()
+var bigqueryClient
 
 selectFrom = function() {
+  console.log('getting select')
   return `SELECT * FROM \`${datasetId}.${tableId}\``
 }
 
 legacySelectFrom = function() {
+  console.log(`getting legacy select using project ${projectId}`)
   return `SELECT * FROM [${projectId}:${datasetId}.${tableId}]`
 }
+
 
 // const limit = function(num) { ` limit ${num}`}
 const idQuery = selectFrom() + ` WHERE id = `
 
-exports.setDBInfo = function(project, dataset, table) {
+exports.setDBInfo = function(project, dataset, table, token) {
   console.log("setting db info")
   projectId = project
   datasetId = dataset
   tableId = table
+  this.token = token
+  bigqueryClient=new BigQuery({token: token})
 }
 
 exports.getDBInfo = function() {
@@ -42,6 +48,7 @@ exports.getById = function(id) {
   const options = {
       query: query,
       location: 'US',
+      projectId: projectId
     };
   
   return bigqueryClient.createQueryJob(options)

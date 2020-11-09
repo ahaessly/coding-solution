@@ -14,6 +14,5 @@ services:
     build: .
     volumes:
       - "./server:/app"
-      - "~/.config:/root/.config"
     ports:
       - "3003:3000"

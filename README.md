@@ -13,6 +13,10 @@ The script assumes that all the individual sequence json files are in a local di
 - set your project and load the data
 
 ## Run the client and server
+You need to have the google client cli installed before building the running the docker images. Run
+
+`gcloud auth application-default login`
+
 From the main directory run:
 
 `docker-compose build`
@@ -23,3 +27,19 @@ At any time to stop the client and server, you can run:
 
 `docker-compose stop`
 
+or you can kill the docker and then run:
+
+`docker-compose down`
+
+## Use the Sequence-Finder UI
+
+On the system running the docker images, go to:
+`http://localhost:3031`
+
+Input any combination of 'A's, 'C's, 'G's and 'T's and click on submit. (At this time using the enter key will not submit the search).
+
+## REST API
+The rest Api is server on localhost:3003
+
+Set the BQ project, dataset and table via:
+`http://localhost:3003/dbinfo/<project>/<dataset>/<table>`

@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+const re = new RegExp("^[actgACTG]*$");
+
 class Form extends Component {
   state = {
     bases: ''
@@ -33,9 +35,11 @@ class Form extends Component {
   handleChange = (event) => {
     const {name, value} = event.target
 
-    this.setState({
-      [name]: value,
-    })
+    if (re.test(value)) {
+      this.setState({
+        [name]: value,
+      })
+    }
   }
 }
 

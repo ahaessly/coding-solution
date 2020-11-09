@@ -32,4 +32,4 @@ do
   cat $f >> $TMP_FILE
   echo "" >> $TMP_FILE
 done
-  bq load  --project_id=$PROJECT_ID --source_format=NEWLINE_DELIMITED_JSON ${DATASET}.${TABLE} $TMP_FILE sequence_schema.json
+bq load  --project_id=$PROJECT_ID --source_format=NEWLINE_DELIMITED_JSON ${DATASET}.${TABLE} $TMP_FILE sequence_schema.json
