@@ -4,10 +4,9 @@ const {BigQuery} = require('@google-cloud/bigquery')
 var projectId='ahdsoftware'
 var datasetId='asimov'
 var tableId='sequences'
-var token=''
 
 // Create a client
-var bigqueryClient
+var bigqueryClient =new BigQuery()
 
 selectFrom = function() {
   console.log('getting select')
@@ -28,8 +27,6 @@ exports.setDBInfo = function(project, dataset, table, token) {
   projectId = project
   datasetId = dataset
   tableId = table
-  this.token = token
-  bigqueryClient=new BigQuery({token: token})
 }
 
 exports.getDBInfo = function() {

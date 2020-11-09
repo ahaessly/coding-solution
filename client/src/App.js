@@ -48,8 +48,10 @@ class App extends Component {
   render() {
     return (
         <div>
-          <ConfigBQForm handleSubmit={this.handleBQSubmit} />
+          <ConfigBQForm handleSubmit={this.handleBQSubmit} url={this.state.urlBase} />
+          <p/><p/>
           <Form handleSubmit={this.handleSubmit} />
+          <p/>
           <Table {...this.state} />
         </div>
     )

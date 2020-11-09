@@ -11,6 +11,7 @@ class Form extends Component {
     const { bases } = this.state;
   
     return (
+      <div>
       <form>
         <label htmlFor="bases">Find sequences that contain bases: </label>
         <input
@@ -24,6 +25,7 @@ class Form extends Component {
           onClick={this.submitForm}
         />
       </form>
+      </div>
     );
   }
 
