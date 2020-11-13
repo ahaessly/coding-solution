@@ -1,9 +1,9 @@
 // Import the Google Cloud client library
 const {BigQuery} = require('@google-cloud/bigquery')
 
-var projectId='ahdsoftware'
-var datasetId='asimov'
-var tableId='sequences'
+var projectId='<set-project>'
+var datasetId='<set-dataset>'
+var tableId='<set-table>'
 
 // Create a client
 var bigqueryClient =new BigQuery()
@@ -19,10 +19,9 @@ legacySelectFrom = function() {
 }
 
 
-// const limit = function(num) { ` limit ${num}`}
 const idQuery = selectFrom() + ` WHERE id = `
 
-exports.setDBInfo = function(project, dataset, table, token) {
+exports.setDBInfo = function(project, dataset, table) {
   console.log("setting db info")
   projectId = project
   datasetId = dataset
