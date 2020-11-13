@@ -19,10 +19,10 @@ I am using Google BigQuery to store the sequences. In the `bq` subdirectory is a
 The script assumes that all the individual sequence json files are in a local directory. This has scalability limitations. For a scalable solution, the files should be loaded from google cloud storage. 
 
 - put the json sequence files on your local system and use this location as the `<path-to-files>` parameter below
-- log into gcloud and follow the instructions to authenticate
+- from the terminal, log into gcloud and follow the instructions to authenticate
 `gcloud auth login`
-- set your project
-- from the `bq` directory, run the loaddata shell script. You can you any text names (with `_` as the only special character allowed) for the dataset, table parameters. The script will create them if they do not exist. Specify a filename as <tmpfile> which will be used to correctly format the data for upload. This load command is not idempotent. It will load the data as many times as it is called with the same dataset and table parameters. 
+- set your project `gcloud config set project <project-id>`
+- from the `bq` directory, run the loaddata shell script. You can you any text names (with `_` as the only special character allowed) for the dataset and table parameters. The script will create them if they do not exist. Specify a filename as <tmpfile> which will be used to correctly format the data for upload. This load command is not idempotent. It will load the data as many times as it is called with the same dataset and table parameters. 
 
 	`./loadddata.sh <google-project> <dataset> <table> <path-to-files> <tmpfile>`
 
@@ -55,5 +55,5 @@ Click the `Edit` button to specify the project, dataset and table where the sequ
 Input any combination of nucleotides (A, C, T, G) and click on submit. (At this time using the enter key will not submit the search).
 
 ## REST API
-The rest Api is server on localhost:3003
+The REST API is directly accessible at http://localhost:3003
 
