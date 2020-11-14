@@ -1,13 +1,13 @@
 import './App.css';
 
 import React, {Component} from 'react'
-import Table from './Table' 
-import Form from './Form'
+import SequenceTable from './SequenceTable' 
+import FindSequenceForm from './FindSequenceForm'
 import ConfigBQForm from './ConfigBQForm'
 
 class App extends Component {
   state = {
-    bases: "",
+    bases: '',
     urlBase: "http://localhost:3003",
     sequences: [],
     project: '',
@@ -50,9 +50,9 @@ class App extends Component {
         <div>
           <ConfigBQForm handleSubmit={this.handleBQSubmit} url={this.state.urlBase} />
           <p/><p/>
-          <Form handleSubmit={this.handleSubmit} />
+          <FindSequenceForm handleSubmit={this.handleSubmit} />
           <p/>
-          <Table {...this.state} />
+          <SequenceTable {...this.state} />
         </div>
     )
     }

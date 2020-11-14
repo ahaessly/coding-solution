@@ -1,6 +1,6 @@
 # coding-solution
-
 ##Requirements
+
 Install the Google Cloud SDK on your system.
 
 	https://cloud.google.com/sdk/docs/install
@@ -52,8 +52,23 @@ On the system running the docker image, go to:
 
 Click the `Edit` button to specify the project, dataset and table where the sequences are loaded.
 
-Input any combination of nucleotides (A, C, T, G) and click on submit. (At this time using the enter key will not submit the search).
+Input any combination of nucleotides (A, C, T, G, a, c, t, g) and click on submit (currently pressing the Enter key while in the text box does not work). The field will only allow these characters.
 
 ## REST API
 The REST API is directly accessible at http://localhost:3003
+
+Supported API:
+
+HTTP Method | Path | Functionality 
+--- | --- | --- 
+GET | /dbinfo | Retrieves the google project, dataset and table containing the seqeunce data
+POST | /dbinfo/*project*/*dataset*/*table* | Sets the google project, dataset and table to use to query sequences
+GET | /sequence/*id* | Retrieves a sequence by its id
+GET | sequence/match/*bases* | Returns all of the sequence objects where the sequence contains the bases
+
+
+## Run server tests
+
+From the server subdirectory, run `npm run test`
+
 

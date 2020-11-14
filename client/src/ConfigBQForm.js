@@ -33,7 +33,7 @@ class ConfigBQForm extends Component {
     }
     return (
       <div>
-        <text><b>BQ table:</b> {this.state.project}.{this.state.dataset}.{this.state.table}&nbsp;&nbsp;</text>
+        <b>BQ table:</b> {this.state.project}.{this.state.dataset}.{this.state.table}&nbsp;&nbsp;
         <button onClick = {() => this.setState({inEdit: true})}>Edit</button>
       </div>
     )
